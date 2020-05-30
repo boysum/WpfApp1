@@ -1,0 +1,43 @@
+﻿<Window x:Name="MainWindow1" x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:webEye="clr-namespace:WebEye.Controls.Wpf;assembly=WebEye.Controls.Wpf.WebCameraControl"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanMinimize" StateChanged="Window_StateChanged" SnapsToDevicePixels="True" MouseUp="Window_MouseUp" WindowStyle="None" MinHeight="600" MinWidth="800">
+    <Grid x:Name="mainGrid">
+        <TabControl x:Name="tabItems">
+            <TabItem Header="TabItem">
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+                    <Canvas x:Name="canPic" MouseWheel="canPic_MouseWheel" MouseMove="pic1_MouseMove" MouseLeftButtonUp="pic1_MouseLeftButtonUp" SnapsToDevicePixels="True" MouseLeftButtonDown="pic1_MouseLeftButtonDown">
+
+                        <Image x:Name="pic1" Canvas.Left="0" Canvas.Top="0" />
+                        <Button Content="Button" Canvas.Left="744" Canvas.Top="53" Click="Button_Click"/>
+                        <Border BorderThickness="2" BorderBrush="Red" Canvas.Left="89" Canvas.Top="106" x:Name="borderOverlay">
+                            <Image x:Name="imgOverlay" Height="708" Canvas.Left="47" Canvas.Top="50" Width="580" Source="/blank-profile-head-fullSize.png" StretchDirection="Both" Stretch="UniformToFill" Opacity="0.25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                    </Canvas>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5" DragEnter="Grid_DragEnter" Drop="Grid_Drop" AllowDrop="True">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="71*"/>
+                        <ColumnDefinition Width="238*"/>
+                        <ColumnDefinition Width="475*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </TabItem>
+            <TabItem Header="camera">
+                <Canvas>
+                    <webEye:WebCameraControl></webEye:WebCameraControl>
+                </Canvas>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
